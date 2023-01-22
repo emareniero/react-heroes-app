@@ -14,7 +14,7 @@ return ( alter_ego === characters )
 
 export const HeroCard = ({ id, superhero, publisher, alter_ego, first_appearance, characters }) => {
   // Creamos el path de la imagen. Cuando viene del root ponemos directamente /
-  const heroImgUrl = `/assets/heroes/${id}.jpg`;
+  const heroImgUrl = `/heroes/${id}.jpg`;
 
   // Creamos un constante para mostrar los personajes por actor
   //   const caracterByHero = (<p>{characters}</p>);
