@@ -1,11 +1,20 @@
+import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth/context/AuthContext";
 
 export const Navbar = () => {
+  // Traemos el user para ver la persona loggeada para ponerlo en el navbar y el método logout
+  const { user, logout } = useContext(AuthContext);
+
   // Ahora vamos a hacer uso del useNavigate que es un custom Hook de React-Router-Dom
   const navigate = useNavigate();
 
   // Creamos la función para hacer logout al clickear
   const onLogOut = () => {
+
+    // llamamos al metodo log out
+    logout()
+
     // usamos la función navigate para decidir donde queremos ir
     // si le agregamos el replace: true la persona no va apoder volver a la pag anterior
     // lo cual es válido en un logout
@@ -25,12 +34,11 @@ export const Navbar = () => {
           <NavLink className={({ isActive }) => `nav-item nav-link ${isActive ? "active" : ""}`} to="/marvel">
             Marvel
           </NavLink>
-
           <NavLink className={({ isActive }) => `nav-item nav-link ${isActive ? "active" : ""}`} to="/dc">
             DC
           </NavLink>
-
-          /* <NavLink className={({ isActive }) => `nav-item nav-link ${isActive ? "active" : ""}`} to="/search">
+          /*{" "}
+          <NavLink className={({ isActive }) => `nav-item nav-link ${isActive ? "active" : ""}`} to="/search">
             Search
           </NavLink>
         </div>
@@ -38,7 +46,7 @@ export const Navbar = () => {
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
-          <span className="nav-item nav-link text-info">Emanuel</span>
+          <span className="nav-item nav-link text-info">{user?.name}</span>
           <button className="nav-item nav-link btn" onClick={onLogOut}>
             Logout
           </button>
