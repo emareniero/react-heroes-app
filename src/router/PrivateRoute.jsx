@@ -9,7 +9,7 @@ export const PrivateRoute = ({ children }) => {
   const { logged } = useContext(AuthContext);
   // Vamos a usara el useLocation para recordar la página anterior en la que estaba
   const { pathname, search } = useLocation();
-  console.log(location); // Chequeamos que hy en location y vemos que hay path y search
+  // console.log(location); // Chequeamos que hy en location y vemos que hay path y search
   // definimos el último path
   const lastPath = pathname + search;
   // Guarddamos el lastPath en el localStorage
